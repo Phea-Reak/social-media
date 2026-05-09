@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "@rosten_404 — SocialHub",
+  title: "Reak Social Media",
   description: "Connect with Eang Sopheareak across all platforms.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
