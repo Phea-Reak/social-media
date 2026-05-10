@@ -50,9 +50,7 @@ export default function Home() {
           ))}
         </div>
 
-        <footer className="mt-14 font-mono text-[10px] text-zinc-300 dark:text-zinc-700 uppercase tracking-[0.3em]">
-          SocialHub
-        </footer>
+      
       </div>
     </div>
   );
