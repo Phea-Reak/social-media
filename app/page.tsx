@@ -17,7 +17,7 @@ export default function Home() {
         <div className="relative mb-8">
           <div className="w-28 h-28 border-2 border-accent overflow-hidden">
             <img
-              src="/reak.jpg"
+              src="/ROSTEN.jpg"
               alt="Eang Sopheareak"
               className="w-full h-full object-cover"
             />
