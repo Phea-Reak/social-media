@@ -42,13 +42,13 @@ const platformColors: Record<string, string> = {
 
 export default function FeedPage() {
   return (
-    <div className="flex-1 bg-zinc-50 dark:bg-black min-h-screen">
+    <div className="flex-1 cutie-bg min-h-screen">
       <div className="max-w-2xl mx-auto p-4 pt-6">
         <div className="space-y-4">
           {posts.map((post) => (
             <article
               key={post.id}
-              className="bg-white dark:bg-zinc-900 rounded-2xl p-5 shadow-sm border border-zinc-100 dark:border-zinc-800"
+              className="bg-white dark:bg-zinc-900 rounded-2xl p-5 card-3d light-overlay border border-white/20 dark:border-zinc-700/50"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className={`w-10 h-10 rounded-full ${platformColors[post.platform]} flex items-center justify-center text-white`}>

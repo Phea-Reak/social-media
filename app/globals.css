@@ -5,6 +5,8 @@
   --foreground: #0a0a0a;
   --accent: #ed1c24;
   --dot-color: rgba(0, 0, 0, 0.06);
+  --shadow-3d: 0 1px 1px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06), 0 4px 8px rgba(0,0,0,0.06), 0 8px 16px rgba(0,0,0,0.08);
+  --shadow-3d-hover: 0 2px 2px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.08), 0 8px 16px rgba(0,0,0,0.08), 0 16px 32px rgba(0,0,0,0.12);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -12,6 +14,8 @@
     --background: #0a0a0a;
     --foreground: #ededed;
     --dot-color: rgba(255, 255, 255, 0.04);
+    --shadow-3d: 0 1px 1px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.4);
+    --shadow-3d-hover: 0 2px 2px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.4), 0 8px 16px rgba(0,0,0,0.4), 0 16px 32px rgba(0,0,0,0.5);
   }
 }
 
@@ -32,4 +36,281 @@ body {
 .dot-bg {
   background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
   background-size: 20px 20px;
+}
+
+.beach-bg {
+  background:
+    radial-gradient(ellipse 180px 45px at 12% 18%, rgba(255,255,255,0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 140px 35px at 45% 28%, rgba(255,255,255,0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 100px 30px at 72% 15%, rgba(255,255,255,0.65) 0%, transparent 70%),
+    radial-gradient(ellipse 160px 40px at 85% 32%, rgba(255,255,255,0.5) 0%, transparent 70%),
+    radial-gradient(circle 100px at 78% 18%, rgba(255,245,200,0.25) 0%, transparent 60%),
+    radial-gradient(circle 55px at 78% 18%, #FFF9C4 0%, #FFE082 35%, transparent 65%),
+    linear-gradient(180deg,
+      #3A7BD5 0%,
+      #4A8FE0 10%,
+      #64B5F6 25%,
+      #90CAF9 40%,
+      #B3E0F5 52%,
+      #D4EEF5 58%
+    ),
+    linear-gradient(180deg,
+      transparent 56%,
+      #1A7F8C 59%,
+      #0E6A7A 68%,
+      #1590A0 74%,
+      #1DA8BA 80%,
+      transparent 83%
+    ),
+    linear-gradient(180deg,
+      transparent 81%,
+      #F5DEB3 83%,
+      #EDD499 89%,
+      #DEBF78 95%,
+      #CFAA55 99%,
+      #C49A3C 100%
+    );
+  background-size:
+    auto, auto, auto, auto, auto, auto,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.beach-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 200% 35px at 18% 81%, rgba(255,255,255,0.3) 0%, transparent 55%),
+    radial-gradient(ellipse 160% 28px at 55% 80.5%, rgba(255,255,255,0.25) 0%, transparent 55%),
+    radial-gradient(ellipse 180% 30px at 82% 81.5%, rgba(255,255,255,0.28) 0%, transparent 55%),
+    radial-gradient(ellipse 140% 22px at 38% 80%, rgba(255,255,255,0.2) 0%, transparent 50%);
+  pointer-events: none;
+  animation: wave-sway 8s ease-in-out infinite;
+}
+
+.beach-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 180px 12px at 25% 59.5%, rgba(255,255,255,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 140px 10px at 65% 59%, rgba(255,255,255,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 120px 8px at 48% 58.5%, rgba(255,255,255,0.15) 0%, transparent 55%);
+  pointer-events: none;
+  animation: wave-sway 5s ease-in-out infinite reverse;
+}
+
+@keyframes wave-sway {
+  0%, 100% { transform: translateX(0); }
+  33% { transform: translateX(12px); }
+  66% { transform: translateX(-10px); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .beach-bg {
+    background:
+      radial-gradient(ellipse 160px 40px at 15% 22%, rgba(255,255,255,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 120px 30px at 50% 30%, rgba(255,255,255,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 100px 28px at 78% 18%, rgba(255,255,255,0.07) 0%, transparent 70%),
+      radial-gradient(circle 60px at 70% 12%, rgba(255,220,180,0.15) 0%, transparent 60%),
+      radial-gradient(circle 35px at 70% 12%, #FFD89B 0%, #E8A850 35%, transparent 65%),
+      linear-gradient(180deg,
+        #0D1B2A 0%,
+        #1B2838 15%,
+        #1A365D 30%,
+        #2A4A7F 45%,
+        #1E3A5F 55%
+      ),
+      linear-gradient(180deg,
+        transparent 54%,
+        #0D4F5C 57%,
+        #0A3D4A 66%,
+        #0F5A6A 73%,
+        #136B7C 79%,
+        transparent 82%
+      ),
+      linear-gradient(180deg,
+        transparent 80%,
+        #5C4033 82%,
+        #4A3228 89%,
+        #3E2723 95%,
+        #2C1A14 100%
+      );
+  }
+
+  .beach-bg::before {
+    background:
+      radial-gradient(ellipse 200% 30px at 18% 80%, rgba(255,255,255,0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 160% 25px at 55% 80%, rgba(255,255,255,0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 180% 28px at 82% 81%, rgba(255,255,255,0.07) 0%, transparent 55%);
+  }
+
+  .beach-bg::after {
+    background:
+      radial-gradient(ellipse 160px 10px at 25% 57.5%, rgba(255,255,255,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 120px 8px at 65% 57%, rgba(255,255,255,0.05) 0%, transparent 60%);
+  }
+}
+
+.cutie-bg {
+  background:
+    radial-gradient(circle 3px at 15% 20%, rgba(255,255,255,0.7) 0%, transparent 100%),
+    radial-gradient(circle 2px at 85% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(circle 3px at 50% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(circle 2px at 30% 40%, rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(circle 3px at 75% 45%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(circle 2px at 10% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(circle 3px at 90% 65%, rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(circle 2px at 40% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(circle 3px at 65% 80%, rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(circle 2px at 20% 85%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(circle 3px at 80% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(circle 2px at 55% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    linear-gradient(135deg,
+      #FDE8EC 0%,
+      #F8D7E5 15%,
+      #F5C4D8 30%,
+      #ECD5F0 48%,
+      #E0D4F5 65%,
+      #FDE8EC 82%,
+      #FFF0F5 100%
+    );
+  position: relative;
+  overflow: hidden;
+}
+
+.cutie-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 80px at 25% 35%, rgba(255,182,193,0.25) 0%, transparent 60%),
+    radial-gradient(circle 60px at 72% 28%, rgba(255,192,203,0.2) 0%, transparent 55%),
+    radial-gradient(circle 90px at 55% 60%, rgba(221,160,221,0.18) 0%, transparent 60%),
+    radial-gradient(circle 70px at 15% 70%, rgba(255,182,193,0.22) 0%, transparent 55%),
+    radial-gradient(circle 65px at 85% 55%, rgba(255,192,203,0.2) 0%, transparent 55%);
+  pointer-events: none;
+  animation: float-blobs 10s ease-in-out infinite;
+}
+
+.cutie-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 50px at 40% 22%, rgba(255,218,185,0.25) 0%, transparent 55%),
+    radial-gradient(circle 75px at 60% 75%, rgba(255,182,193,0.18) 0%, transparent 55%),
+    radial-gradient(circle 55px at 80% 40%, rgba(221,160,221,0.2) 0%, transparent 55%),
+    radial-gradient(circle 45px at 10% 48%, rgba(255,192,203,0.22) 0%, transparent 55%);
+  pointer-events: none;
+  animation: float-blobs 8s ease-in-out infinite reverse;
+}
+
+@keyframes float-blobs {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(15px, -10px) scale(1.05); }
+  50% { transform: translate(-8px, -18px) scale(0.95); }
+  75% { transform: translate(-12px, 8px) scale(1.03); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .cutie-bg {
+    background:
+      radial-gradient(circle 3px at 15% 20%, rgba(255,255,255,0.15) 0%, transparent 100%),
+      radial-gradient(circle 2px at 85% 25%, rgba(255,255,255,0.12) 0%, transparent 100%),
+      radial-gradient(circle 3px at 50% 15%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(circle 2px at 30% 40%, rgba(255,255,255,0.12) 0%, transparent 100%),
+      radial-gradient(circle 3px at 75% 45%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(circle 2px at 10% 60%, rgba(255,255,255,0.12) 0%, transparent 100%),
+      radial-gradient(circle 3px at 90% 65%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(circle 2px at 40% 70%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(circle 3px at 65% 80%, rgba(255,255,255,0.08) 0%, transparent 100%),
+      radial-gradient(circle 2px at 20% 85%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      radial-gradient(circle 3px at 80% 90%, rgba(255,255,255,0.08) 0%, transparent 100%),
+      radial-gradient(circle 2px at 55% 55%, rgba(255,255,255,0.1) 0%, transparent 100%),
+      linear-gradient(135deg,
+        #2D1B2E 0%,
+        #3B2440 15%,
+        #2E2035 30%,
+        #251A30 48%,
+        #2A1F35 65%,
+        #2D1B2E 82%,
+        #1F1425 100%
+      );
+  }
+
+  .cutie-bg::before {
+    background:
+      radial-gradient(circle 80px at 25% 35%, rgba(200,130,160,0.12) 0%, transparent 60%),
+      radial-gradient(circle 60px at 72% 28%, rgba(200,140,170,0.1) 0%, transparent 55%),
+      radial-gradient(circle 90px at 55% 60%, rgba(160,120,180,0.1) 0%, transparent 60%),
+      radial-gradient(circle 70px at 15% 70%, rgba(200,130,160,0.1) 0%, transparent 55%),
+      radial-gradient(circle 65px at 85% 55%, rgba(200,140,170,0.1) 0%, transparent 55%);
+  }
+
+  .cutie-bg::after {
+    background:
+      radial-gradient(circle 50px at 40% 22%, rgba(180,140,160,0.12) 0%, transparent 55%),
+      radial-gradient(circle 75px at 60% 75%, rgba(200,130,160,0.1) 0%, transparent 55%),
+      radial-gradient(circle 55px at 80% 40%, rgba(160,120,180,0.1) 0%, transparent 55%),
+      radial-gradient(circle 45px at 10% 48%, rgba(200,140,170,0.1) 0%, transparent 55%);
+  }
+}
+
+.perspective-3d {
+  perspective: 1200px;
+}
+
+.card-3d {
+  box-shadow: var(--shadow-3d);
+  transform: translateZ(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-3d:hover {
+  transform: translateY(-4px) translateZ(10px);
+  box-shadow: var(--shadow-3d-hover);
+}
+
+.card-3d-press:active {
+  transform: translateY(1px) translateZ(-5px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.avatar-3d {
+  box-shadow:
+    0 0 0 4px var(--background),
+    0 0 0 6px var(--accent),
+    0 4px 12px rgba(0,0,0,0.15),
+    0 8px 24px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.avatar-3d:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 0 0 4px var(--background),
+    0 0 0 6px var(--accent),
+    0 6px 18px rgba(0,0,0,0.2),
+    0 12px 32px rgba(0,0,0,0.16);
+}
+
+.light-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%, rgba(0,0,0,0.04) 100%);
+  pointer-events: none;
+  border-radius: inherit;
 }
