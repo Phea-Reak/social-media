@@ -1,316 +1,395 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --accent: #ed1c24;
-  --dot-color: rgba(0, 0, 0, 0.06);
-  --shadow-3d: 0 1px 1px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06), 0 4px 8px rgba(0,0,0,0.06), 0 8px 16px rgba(0,0,0,0.08);
-  --shadow-3d-hover: 0 2px 2px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.08), 0 8px 16px rgba(0,0,0,0.08), 0 16px 32px rgba(0,0,0,0.12);
+  --foreground: #000000;
+  --bg-elevated: #FFFFFF;
+  --ios-blue: #007AFF;
+  --ios-pink: #FF2D55;
+  --ios-green: #34C759;
+  --ios-orange: #FF9500;
+  --ios-red: #FF3B30;
+  --ios-teal: #5AC8FA;
+  --ios-indigo: #5856D6;
+  --ios-fill-primary: rgba(120, 120, 128, 0.16);
+  --ios-fill-secondary: rgba(120, 120, 128, 0.12);
+  --ios-fill-tertiary: rgba(120, 120, 128, 0.08);
+  --ios-bg: #F2F2F7;
+  /* ===== Glass Surface (thin / decorative) ===== */
+  --glass-surface-blur: 10px;
+  --glass-surface-bg: rgba(255, 255, 255, 0.30);
+  --glass-surface-border: rgba(255, 255, 255, 0.20);
+  --glass-surface-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  --glass-surface-specular: rgba(255, 255, 255, 0.50);
+  --glass-surface-absorption: rgba(0, 0, 0, 0.04);
+  --glass-surface-chromatic-blue: rgba(100, 150, 255, 0.03);
+  --glass-surface-chromatic-red: rgba(255, 80, 80, 0.02);
+
+  /* ===== Glass Material (standard / cards & links) ===== */
+  --glass-material-blur: 24px;
+  --glass-material-bg: rgba(255, 255, 255, 0.55);
+  --glass-material-border: rgba(255, 255, 255, 0.32);
+  --glass-material-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
+  --glass-material-specular: rgba(255, 255, 255, 0.55);
+  --glass-material-absorption: rgba(0, 0, 0, 0.06);
+  --glass-material-chromatic-blue: rgba(100, 150, 255, 0.04);
+  --glass-material-chromatic-red: rgba(255, 60, 60, 0.03);
+
+  /* ===== Glass Panel (thick / content-dense) ===== */
+  --glass-panel-blur: 40px;
+  --glass-panel-bg: rgba(255, 255, 255, 0.72);
+  --glass-panel-border: rgba(255, 255, 255, 0.42);
+  --glass-panel-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --glass-panel-specular: rgba(255, 255, 255, 0.60);
+  --glass-panel-absorption: rgba(0, 0, 0, 0.08);
+  --glass-panel-chromatic-blue: rgba(100, 150, 255, 0.05);
+  --glass-panel-chromatic-red: rgba(255, 40, 40, 0.04);
+
+  /* ===== Glass Text ===== */
+  --glass-text: #1a1a1a;
+  --glass-text-secondary: #6b6b6b;
+  --glass-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.60);
+
+  /* ===== Dense Modifier ===== */
+  --glass-dense-opacity-boost: 0.18;
+
+  --shadow-ios-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-ios-md: 0 4px 12px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-ios-lg: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --radius-ios-sm: 12px;
+  --radius-ios-md: 16px;
+  --radius-ios-lg: 20px;
+  --radius-ios-xl: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --dot-color: rgba(255, 255, 255, 0.04);
-    --shadow-3d: 0 1px 1px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.4);
-    --shadow-3d-hover: 0 2px 2px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.4), 0 8px 16px rgba(0,0,0,0.4), 0 16px 32px rgba(0,0,0,0.5);
+    --foreground: #FFFFFF;
+    --bg-elevated: #1C1C1E;
+    --ios-bg: #000000;
+    /* Glass Surface (dark) */
+    --glass-surface-bg: rgba(30, 30, 32, 0.22);
+    --glass-surface-border: rgba(255, 255, 255, 0.05);
+    --glass-surface-shadow: 0 1px 4px rgba(0, 0, 0, 0.30);
+    --glass-surface-specular: rgba(255, 255, 255, 0.08);
+    --glass-surface-absorption: rgba(0, 0, 0, 0.20);
+    --glass-surface-chromatic-blue: rgba(80, 140, 255, 0.04);
+    --glass-surface-chromatic-red: rgba(255, 60, 60, 0.03);
+
+    /* Glass Material (dark) */
+    --glass-material-bg: rgba(30, 30, 32, 0.45);
+    --glass-material-border: rgba(255, 255, 255, 0.07);
+    --glass-material-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 1px 4px rgba(0, 0, 0, 0.20);
+    --glass-material-specular: rgba(255, 255, 255, 0.10);
+    --glass-material-absorption: rgba(0, 0, 0, 0.25);
+    --glass-material-chromatic-blue: rgba(80, 140, 255, 0.05);
+    --glass-material-chromatic-red: rgba(255, 50, 50, 0.04);
+
+    /* Glass Panel (dark) */
+    --glass-panel-bg: rgba(30, 30, 32, 0.65);
+    --glass-panel-border: rgba(255, 255, 255, 0.10);
+    --glass-panel-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.25);
+    --glass-panel-specular: rgba(255, 255, 255, 0.12);
+    --glass-panel-absorption: rgba(0, 0, 0, 0.30);
+    --glass-panel-chromatic-blue: rgba(80, 140, 255, 0.06);
+    --glass-panel-chromatic-red: rgba(255, 40, 40, 0.05);
+
+    /* Glass Text (dark) */
+    --glass-text: #f0f0f0;
+    --glass-text-secondary: #a0a0a0;
+    --glass-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.40);
+
+    --shadow-ios-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-ios-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-ios-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
   }
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--ios-bg);
   --color-foreground: var(--foreground);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ios-blue: var(--ios-blue);
+  --color-ios-pink: var(--ios-pink);
+  --color-ios-green: var(--ios-green);
+  --color-ios-orange: var(--ios-orange);
+  --color-ios-red: var(--ios-red);
+  --color-ios-teal: var(--ios-teal);
+  --color-ios-indigo: var(--ios-indigo);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", "Menlo", "Consolas", monospace;
 }
 
 body {
-  background: var(--background);
+  background: var(--ios-bg);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.dot-bg {
-  background-image: radial-gradient(var(--dot-color) 1px, transparent 1px);
-  background-size: 20px 20px;
+/* ============ iOS UTILITY CLASSES ============ */
+
+/* ============ LIQUID GLASS MATERIAL SYSTEM ============ */
+
+.glass-surface,
+.glass-material,
+.glass-panel {
+  backdrop-filter: var(--_glass-blur) saturate(180%);
+  -webkit-backdrop-filter: var(--_glass-blur) saturate(180%);
+  border: 1px solid var(--_glass-border);
+  border-radius: var(--radius-ios-lg);
 }
 
-.beach-bg {
-  background:
-    radial-gradient(ellipse 180px 45px at 12% 18%, rgba(255,255,255,0.7) 0%, transparent 70%),
-    radial-gradient(ellipse 140px 35px at 45% 28%, rgba(255,255,255,0.6) 0%, transparent 70%),
-    radial-gradient(ellipse 100px 30px at 72% 15%, rgba(255,255,255,0.65) 0%, transparent 70%),
-    radial-gradient(ellipse 160px 40px at 85% 32%, rgba(255,255,255,0.5) 0%, transparent 70%),
-    radial-gradient(circle 100px at 78% 18%, rgba(255,245,200,0.25) 0%, transparent 60%),
-    radial-gradient(circle 55px at 78% 18%, #FFF9C4 0%, #FFE082 35%, transparent 65%),
-    linear-gradient(180deg,
-      #3A7BD5 0%,
-      #4A8FE0 10%,
-      #64B5F6 25%,
-      #90CAF9 40%,
-      #B3E0F5 52%,
-      #D4EEF5 58%
-    ),
-    linear-gradient(180deg,
-      transparent 56%,
-      #1A7F8C 59%,
-      #0E6A7A 68%,
-      #1590A0 74%,
-      #1DA8BA 80%,
-      transparent 83%
-    ),
-    linear-gradient(180deg,
-      transparent 81%,
-      #F5DEB3 83%,
-      #EDD499 89%,
-      #DEBF78 95%,
-      #CFAA55 99%,
-      #C49A3C 100%
-    );
-  background-size:
-    auto, auto, auto, auto, auto, auto,
-    100% 100%,
-    100% 100%,
-    100% 100%;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
+/* --- glass-surface: thin, decorative --- */
+.glass-surface {
+  --_glass-blur: blur(var(--glass-surface-blur));
+  --_glass-border: var(--glass-surface-border);
+  background: var(--glass-surface-bg);
+  box-shadow:
+    var(--glass-surface-shadow),
+    inset 0 1px 1px var(--glass-surface-specular),
+    inset 0 -1px 1px var(--glass-surface-absorption),
+    inset 0 1px 0 var(--glass-surface-chromatic-blue),
+    inset 0 -1px 0 var(--glass-surface-chromatic-red);
 }
 
-.beach-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 200% 35px at 18% 81%, rgba(255,255,255,0.3) 0%, transparent 55%),
-    radial-gradient(ellipse 160% 28px at 55% 80.5%, rgba(255,255,255,0.25) 0%, transparent 55%),
-    radial-gradient(ellipse 180% 30px at 82% 81.5%, rgba(255,255,255,0.28) 0%, transparent 55%),
-    radial-gradient(ellipse 140% 22px at 38% 80%, rgba(255,255,255,0.2) 0%, transparent 50%);
-  pointer-events: none;
-  animation: wave-sway 8s ease-in-out infinite;
+/* --- glass-material: cards, containers, links --- */
+.glass-material {
+  --_glass-blur: blur(var(--glass-material-blur));
+  --_glass-border: var(--glass-material-border);
+  background: var(--glass-material-bg);
+  box-shadow:
+    var(--glass-material-shadow),
+    inset 0 1px 1px var(--glass-material-specular),
+    inset 0 -1px 1px var(--glass-material-absorption),
+    inset 0 1px 0 var(--glass-material-chromatic-blue),
+    inset 0 -1px 0 var(--glass-material-chromatic-red);
 }
 
-.beach-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 180px 12px at 25% 59.5%, rgba(255,255,255,0.2) 0%, transparent 60%),
-    radial-gradient(ellipse 140px 10px at 65% 59%, rgba(255,255,255,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 120px 8px at 48% 58.5%, rgba(255,255,255,0.15) 0%, transparent 55%);
-  pointer-events: none;
-  animation: wave-sway 5s ease-in-out infinite reverse;
+/* --- glass-panel: thick, content-dense areas --- */
+.glass-panel {
+  --_glass-blur: blur(var(--glass-panel-blur));
+  --_glass-border: var(--glass-panel-border);
+  background: var(--glass-panel-bg);
+  box-shadow:
+    var(--glass-panel-shadow),
+    inset 0 1px 1px var(--glass-panel-specular),
+    inset 0 -1px 1px var(--glass-panel-absorption),
+    inset 0 1px 0 var(--glass-panel-chromatic-blue),
+    inset 0 -1px 0 var(--glass-panel-chromatic-red);
 }
 
-@keyframes wave-sway {
-  0%, 100% { transform: translateX(0); }
-  33% { transform: translateX(12px); }
-  66% { transform: translateX(-10px); }
+/* --- Dense modifier: boosts opacity for content-heavy glass --- */
+.glass-dense.glass-surface {
+  background: rgba(255, 255, 255, calc(0.30 + var(--glass-dense-opacity-boost)));
+}
+.glass-dense.glass-material {
+  background: rgba(255, 255, 255, calc(0.55 + var(--glass-dense-opacity-boost)));
+}
+.glass-dense.glass-panel {
+  background: rgba(255, 255, 255, calc(0.72 + var(--glass-dense-opacity-boost)));
 }
 
 @media (prefers-color-scheme: dark) {
-  .beach-bg {
-    background:
-      radial-gradient(ellipse 160px 40px at 15% 22%, rgba(255,255,255,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 120px 30px at 50% 30%, rgba(255,255,255,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 100px 28px at 78% 18%, rgba(255,255,255,0.07) 0%, transparent 70%),
-      radial-gradient(circle 60px at 70% 12%, rgba(255,220,180,0.15) 0%, transparent 60%),
-      radial-gradient(circle 35px at 70% 12%, #FFD89B 0%, #E8A850 35%, transparent 65%),
-      linear-gradient(180deg,
-        #0D1B2A 0%,
-        #1B2838 15%,
-        #1A365D 30%,
-        #2A4A7F 45%,
-        #1E3A5F 55%
-      ),
-      linear-gradient(180deg,
-        transparent 54%,
-        #0D4F5C 57%,
-        #0A3D4A 66%,
-        #0F5A6A 73%,
-        #136B7C 79%,
-        transparent 82%
-      ),
-      linear-gradient(180deg,
-        transparent 80%,
-        #5C4033 82%,
-        #4A3228 89%,
-        #3E2723 95%,
-        #2C1A14 100%
-      );
+  .glass-dense.glass-surface {
+    background: rgba(30, 30, 32, calc(0.22 + var(--glass-dense-opacity-boost)));
   }
-
-  .beach-bg::before {
-    background:
-      radial-gradient(ellipse 200% 30px at 18% 80%, rgba(255,255,255,0.08) 0%, transparent 55%),
-      radial-gradient(ellipse 160% 25px at 55% 80%, rgba(255,255,255,0.06) 0%, transparent 55%),
-      radial-gradient(ellipse 180% 28px at 82% 81%, rgba(255,255,255,0.07) 0%, transparent 55%);
+  .glass-dense.glass-material {
+    background: rgba(30, 30, 32, calc(0.45 + var(--glass-dense-opacity-boost)));
   }
-
-  .beach-bg::after {
-    background:
-      radial-gradient(ellipse 160px 10px at 25% 57.5%, rgba(255,255,255,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 120px 8px at 65% 57%, rgba(255,255,255,0.05) 0%, transparent 60%);
+  .glass-dense.glass-panel {
+    background: rgba(30, 30, 32, calc(0.65 + var(--glass-dense-opacity-boost)));
   }
 }
 
-.cutie-bg {
-  background:
-    radial-gradient(circle 3px at 15% 20%, rgba(255,255,255,0.7) 0%, transparent 100%),
-    radial-gradient(circle 2px at 85% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(circle 3px at 50% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(circle 2px at 30% 40%, rgba(255,255,255,0.55) 0%, transparent 100%),
-    radial-gradient(circle 3px at 75% 45%, rgba(255,255,255,0.6) 0%, transparent 100%),
-    radial-gradient(circle 2px at 10% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(circle 3px at 90% 65%, rgba(255,255,255,0.55) 0%, transparent 100%),
-    radial-gradient(circle 2px at 40% 70%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(circle 3px at 65% 80%, rgba(255,255,255,0.45) 0%, transparent 100%),
-    radial-gradient(circle 2px at 20% 85%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    radial-gradient(circle 3px at 80% 90%, rgba(255,255,255,0.4) 0%, transparent 100%),
-    radial-gradient(circle 2px at 55% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
-    linear-gradient(135deg,
-      #FDE8EC 0%,
-      #F8D7E5 15%,
-      #F5C4D8 30%,
-      #ECD5F0 48%,
-      #E0D4F5 65%,
-      #FDE8EC 82%,
-      #FFF0F5 100%
-    );
-  position: relative;
-  overflow: hidden;
+/* --- Text on glass --- */
+.glass-text {
+  color: var(--glass-text);
+  text-shadow: var(--glass-text-shadow);
+}
+.glass-text-secondary {
+  color: var(--glass-text-secondary);
+  text-shadow: var(--glass-text-shadow);
 }
 
-.cutie-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle 80px at 25% 35%, rgba(255,182,193,0.25) 0%, transparent 60%),
-    radial-gradient(circle 60px at 72% 28%, rgba(255,192,203,0.2) 0%, transparent 55%),
-    radial-gradient(circle 90px at 55% 60%, rgba(221,160,221,0.18) 0%, transparent 60%),
-    radial-gradient(circle 70px at 15% 70%, rgba(255,182,193,0.22) 0%, transparent 55%),
-    radial-gradient(circle 65px at 85% 55%, rgba(255,192,203,0.2) 0%, transparent 55%);
-  pointer-events: none;
-  animation: float-blobs 10s ease-in-out infinite;
+.ios-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-ios-md);
+  box-shadow: var(--shadow-ios-sm);
 }
 
-.cutie-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle 50px at 40% 22%, rgba(255,218,185,0.25) 0%, transparent 55%),
-    radial-gradient(circle 75px at 60% 75%, rgba(255,182,193,0.18) 0%, transparent 55%),
-    radial-gradient(circle 55px at 80% 40%, rgba(221,160,221,0.2) 0%, transparent 55%),
-    radial-gradient(circle 45px at 10% 48%, rgba(255,192,203,0.22) 0%, transparent 55%);
-  pointer-events: none;
-  animation: float-blobs 8s ease-in-out infinite reverse;
+.ios-title {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.37px;
+  line-height: 1.2;
 }
 
-@keyframes float-blobs {
+.ios-headline {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.022em;
+}
+
+.ios-body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 1.47;
+}
+
+.ios-caption {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ios-fill-primary);
+}
+
+/* ============ METALLIC + PINK ANIMATED BACKGROUND ============ */
+
+@keyframes metallic-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pink-orb-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(15px, -10px) scale(1.05); }
-  50% { transform: translate(-8px, -18px) scale(0.95); }
-  75% { transform: translate(-12px, 8px) scale(1.03); }
+  25% { transform: translate(60px, -40px) scale(1.15); }
+  50% { transform: translate(30px, 20px) scale(0.95); }
+  75% { transform: translate(-20px, -30px) scale(1.1); }
 }
 
-@media (prefers-color-scheme: dark) {
-  .cutie-bg {
-    background:
-      radial-gradient(circle 3px at 15% 20%, rgba(255,255,255,0.15) 0%, transparent 100%),
-      radial-gradient(circle 2px at 85% 25%, rgba(255,255,255,0.12) 0%, transparent 100%),
-      radial-gradient(circle 3px at 50% 15%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(circle 2px at 30% 40%, rgba(255,255,255,0.12) 0%, transparent 100%),
-      radial-gradient(circle 3px at 75% 45%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(circle 2px at 10% 60%, rgba(255,255,255,0.12) 0%, transparent 100%),
-      radial-gradient(circle 3px at 90% 65%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(circle 2px at 40% 70%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(circle 3px at 65% 80%, rgba(255,255,255,0.08) 0%, transparent 100%),
-      radial-gradient(circle 2px at 20% 85%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      radial-gradient(circle 3px at 80% 90%, rgba(255,255,255,0.08) 0%, transparent 100%),
-      radial-gradient(circle 2px at 55% 55%, rgba(255,255,255,0.1) 0%, transparent 100%),
-      linear-gradient(135deg,
-        #2D1B2E 0%,
-        #3B2440 15%,
-        #2E2035 30%,
-        #251A30 48%,
-        #2A1F35 65%,
-        #2D1B2E 82%,
-        #1F1425 100%
-      );
-  }
-
-  .cutie-bg::before {
-    background:
-      radial-gradient(circle 80px at 25% 35%, rgba(200,130,160,0.12) 0%, transparent 60%),
-      radial-gradient(circle 60px at 72% 28%, rgba(200,140,170,0.1) 0%, transparent 55%),
-      radial-gradient(circle 90px at 55% 60%, rgba(160,120,180,0.1) 0%, transparent 60%),
-      radial-gradient(circle 70px at 15% 70%, rgba(200,130,160,0.1) 0%, transparent 55%),
-      radial-gradient(circle 65px at 85% 55%, rgba(200,140,170,0.1) 0%, transparent 55%);
-  }
-
-  .cutie-bg::after {
-    background:
-      radial-gradient(circle 50px at 40% 22%, rgba(180,140,160,0.12) 0%, transparent 55%),
-      radial-gradient(circle 75px at 60% 75%, rgba(200,130,160,0.1) 0%, transparent 55%),
-      radial-gradient(circle 55px at 80% 40%, rgba(160,120,180,0.1) 0%, transparent 55%),
-      radial-gradient(circle 45px at 10% 48%, rgba(200,140,170,0.1) 0%, transparent 55%);
-  }
+@keyframes pink-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  30% { transform: translate(-50px, -30px) scale(1.2); }
+  60% { transform: translate(20px, 40px) scale(0.9); }
+  85% { transform: translate(40px, -10px) scale(1.05); }
 }
 
-.perspective-3d {
-  perspective: 1200px;
+@keyframes pink-orb-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(-30px, 50px) scale(1.1); }
+  50% { transform: translate(40px, -20px) scale(0.85); }
+  80% { transform: translate(-10px, 30px) scale(1.15); }
 }
 
-.card-3d {
-  box-shadow: var(--shadow-3d);
-  transform: translateZ(0);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+@keyframes metallic-text-shine {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
-.card-3d:hover {
-  transform: translateY(-4px) translateZ(10px);
-  box-shadow: var(--shadow-3d-hover);
-}
-
-.card-3d-press:active {
-  transform: translateY(1px) translateZ(-5px);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-
-.avatar-3d {
-  box-shadow:
-    0 0 0 4px var(--background),
-    0 0 0 6px var(--accent),
-    0 4px 12px rgba(0,0,0,0.15),
-    0 8px 24px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.avatar-3d:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow:
-    0 0 0 4px var(--background),
-    0 0 0 6px var(--accent),
-    0 6px 18px rgba(0,0,0,0.2),
-    0 12px 32px rgba(0,0,0,0.16);
-}
-
-.light-overlay {
+.metallic-bg {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #1a1a2e 50%, #0f0f1a 75%, #1a1a2e 100%);
+  background-size: 400% 400%;
   position: relative;
   overflow: hidden;
 }
 
-.light-overlay::after {
+.metallic-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 50%, rgba(0,0,0,0.04) 100%);
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(180, 180, 200, 0.04) 38%,
+    rgba(200, 200, 220, 0.08) 40%,
+    rgba(180, 180, 200, 0.04) 42%,
+    transparent 50%
+  );
+  background-size: 200% 100%;
+  animation: metallic-shimmer 8s ease-in-out infinite;
   pointer-events: none;
-  border-radius: inherit;
+  z-index: 0;
+}
+
+.metallic-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Pink orb layers */
+.orb-1 {
+  position: absolute;
+  width: 450px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 45, 133, 0.18) 0%, rgba(255, 45, 133, 0.05) 40%, transparent 70%);
+  top: -5%;
+  left: 10%;
+  filter: blur(40px);
+  animation: pink-orb-1 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-2 {
+  position: absolute;
+  width: 400px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 107, 157, 0.15) 0%, rgba(255, 107, 157, 0.04) 40%, transparent 70%);
+  top: 40%;
+  right: 5%;
+  filter: blur(50px);
+  animation: pink-orb-2 12s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-3 {
+  position: absolute;
+  width: 380px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 80, 150, 0.16) 0%, rgba(255, 80, 150, 0.05) 40%, transparent 70%);
+  bottom: -8%;
+  left: 25%;
+  filter: blur(45px);
+  animation: pink-orb-3 11s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============ METALLIC TEXT ============ */
+
+.metallic-text {
+  background: linear-gradient(
+    135deg,
+    #e8e8e8 0%,
+    #ffffff 15%,
+    #c0c0c0 25%,
+    #e8e8e8 35%,
+    #b0b0b0 45%,
+    #f5f5f5 55%,
+    #d0d0d0 65%,
+    #ffffff 80%,
+    #c0c0c0 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: metallic-text-shine 4s ease-in-out infinite;
+}
+
+.metallic-text-static {
+  background: linear-gradient(
+    135deg,
+    #d8d8d8 0%,
+    #f0f0f0 30%,
+    #b8b8b8 50%,
+    #e8e8e8 70%,
+    #c8c8c8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
